@@ -9,6 +9,7 @@ FPS = 60
 CONNECTING_DISTANCE = 80
 CLOCK = pygame.time.Clock()
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
+screen.fill(BG_COLOR)  # set screen with background color
 pygame.display.set_caption("Dots challenge")
 
 
@@ -18,7 +19,6 @@ def main():
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 exit()
-        pygame.draw.rect(screen, BG_COLOR, (200, 200, 200, 200))
         pygame.display.update()
 
 
