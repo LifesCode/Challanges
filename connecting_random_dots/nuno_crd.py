@@ -10,19 +10,6 @@ screen = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption("Dots challenge")
 
 
-class Fragment_point:
-
-    point_size: int
-    colors: list
-
-    def __init__(self) -> None:
-        pass
-
-    def draw(self) -> None:
-        pygame.draw.circle(screen, BLUE, pos, 20)
-    
-
-
 def main():
     while True:
         CLOCK.tick(FPS)
