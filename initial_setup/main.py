@@ -1,14 +1,6 @@
-import pygame
+import connecting_random_dots.raffaele_crd as raff_crd  # example of importing an implementation
 
-pygame.init()
+# example of running an implementation
+raff_crd.main()
 
-WIDTH, HEIGHT = 700, 500
-CLOCK = pygame.time.Clock()
-screen = pygame.display.set_mode((WIDTH, HEIGHT))
-pygame.display.set_caption("Dots challenge")
-
-while True:
-    for event in pygame.event.get():
-        if event.type == pygame.QUIT:
-            exit()
 

@@ -2,14 +2,22 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="810f51f7-2874-40bd-9cff-b2179acb1dd0" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/connecting_random_dots/roberto_crd.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/connecting_random_dots/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/connecting_random_dots/raffaele_crd.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/connecting_random_dots/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/connecting_random_dots/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/connecting_random_dots/raffaele_crd.py" beforeDir="false" afterPath="$PROJECT_DIR$/connecting_random_dots/raffaele_crd.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/initial_setup/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/initial_setup/main.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -23,7 +31,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
   </component>
-  <component name="RunManager" selected="Python.raffaele_crd">
+  <component name="RunManager" selected="Python.main">
     <configuration name="main" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
       <module name="Challanges" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -89,8 +97,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.raffaele_crd" />
         <item itemvalue="Python.main" />
+        <item itemvalue="Python.raffaele_crd" />
       </list>
     </recent_temporary>
   </component>
