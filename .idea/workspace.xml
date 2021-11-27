@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="810f51f7-2874-40bd-9cff-b2179acb1dd0" name="Default Changelist" comment="test2">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/connecting_random_dots/raffaele_crd.py" beforeDir="false" afterPath="$PROJECT_DIR$/connecting_random_dots/raffaele_crd.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />

@@ -12,18 +12,15 @@ MOUSE_LINE_COLOR = (0, 0, 255)
 CONNECTING_DISTANCE = 200
 DOT_CLUSTER_DISTANCE = 80
 DOT_NUMBER = 200
+MAX_DOT_NUMBER = DOT_NUMBER*1.5
 CLOCK = pygame.time.Clock()
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption("Dots challenge")
 
 
-def random_adjust():
-    return r.random()*r.choice([1, -1])
-
-
 class Dot:
-    def __init__(self):
-        self.position = (r.randint(0, WIDTH), r.randint(0, HEIGHT))
+    def __init__(self, x=None, y=None):
+        self.position = (r.randint(0, WIDTH), r.randint(0, HEIGHT)) if x is None else (x, y)
         self.speed = (r.randint(0, 3), r.randint(0, 3))
         self.size = 2
         self.color = (255, 255, 255)
@@ -35,7 +32,8 @@ class Dot:
 
     def update_speed(self):
         if r.random() > 0.95:
-            self.speed = ((self.speed[0]+random_adjust()) % 4, (self.speed[1]+random_adjust()) % 4)
+            self.speed = ((self.speed[0]+r.random()*r.choice([1, -1])) % 4,
+                          (self.speed[1]+r.random()*r.choice([1, -1])) % 4)
         if r.random() > 0.95:
             self.speed = (self.speed[0]*-1, self.speed[1])
         if r.random() > 0.95:
@@ -60,8 +58,7 @@ def refresh(screen_in, dots):
 
 
 def vector_distance(p1, p2):
-    v = ((p1[0] - p2[0]) ** 2 + (p1[1] - p2[1]) ** 2) ** 0.5
-    return v
+    return ((p1[0] - p2[0]) ** 2 + (p1[1] - p2[1]) ** 2) ** 0.5
 
 
 def draw_straight_lines(screen_in, dots):
@@ -84,6 +81,9 @@ def main():
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 exit()
+            elif pygame.mouse.get_pressed(3)[0] and len(dots) < MAX_DOT_NUMBER:
+                x, y = pygame.mouse.get_pos()
+                dots.append(Dot(x, y))
         refresh(screen, dots)
 
 
