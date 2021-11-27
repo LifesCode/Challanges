@@ -12,14 +12,15 @@ pygame.display.set_caption("Dots challenge")
 
 class Fragment_point:
     def __init__(self, initial_position) -> None:
-        self.radium = randint(1,3)
+        self.radium = randint(1,2)
         self.counter = 0
         self.possible_speed = [-2, -1, 1, 2]
         self.speed = (choice(self.possible_speed), choice(self.possible_speed))
         self.colors = [(255, 255, 255), (155, 155, 155)]
-        self.in_use_color = self.colors[0]
+        self.in_use_color = choice(self.colors)
         self.position = [initial_position[0],initial_position[1]]
         self.point_distance, self.mouse_distance = randint(10, 100), 200
+        self.mouse_pos = pygame.mouse.get_pos()
     
     def get_position(self) -> list:
         return self.position
@@ -37,7 +38,8 @@ class Fragment_point:
     def other_point_connections(self, other_point_position: list) -> None:
         for pos in other_point_position:
             if(self.euclidean_distance(pos, (self.position[0], self.position[1])) <= self.point_distance):
-                pygame.draw.line(screen,(155, 155, 155),tuple(self.position) , pos, 1)                
+                pygame.draw.line(screen,(50, 50, 50),tuple(self.position) , pos, 1) if (self.euclidean_distance(pos, (self.position[0], self.position[1])) > self.point_distance - 20) else\
+                  pygame.draw.line(screen,(205, 205, 205),tuple(self.position) , pos, 1)              
     
     def speed_control(self) -> None:
         if(self.counter > 20):
@@ -52,7 +54,7 @@ class Fragment_point:
         self.position[0] += self.speed[0]
         self.position[1] += self.speed[1]
         pygame.draw.circle(screen, self.in_use_color, tuple(self.position), self.radium)
-        self.mouse_connection()
+        # self.mouse_connection()
     
 class Animation:
     def __init__(self) -> None:
@@ -77,6 +79,7 @@ class Animation:
         self.generate_new_points()
         if pygame.mouse.get_pressed(3)[0]:
             self.generate_new_points_by_click() 
+        [point.mouse_connection() for point in self.point_list]
 
 animation = Animation()
 def main():
