@@ -10,6 +10,8 @@ screen = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption("Dots challenge")
 
 
+
+
 def main():
     while True:
         CLOCK.tick(FPS)
