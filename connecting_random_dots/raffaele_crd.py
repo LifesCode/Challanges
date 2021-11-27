@@ -53,7 +53,6 @@ def refresh(screen_in, dots):
     screen_in.blit(BG, (0, 0))
     [dot.draw(screen_in) for dot in dots]
     draw_straight_lines(screen, dots)
-    # draw_straight_lines_mouse(screen, dots)
     pygame.display.update()
 
 
