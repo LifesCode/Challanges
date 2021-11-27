@@ -3,7 +3,7 @@ import random as r
 
 pygame.init()
 
-WIDTH, HEIGHT = 1080, 720
+WIDTH, HEIGHT = 900, 720
 BG_COLOR = (0, 0, 0)  # default is (0, 150, 150)
 BG = pygame.Surface((WIDTH, HEIGHT))
 BG.fill(BG_COLOR)  # set screen with background color
@@ -23,7 +23,7 @@ class Dot:
         self.position = (r.randint(0, WIDTH), r.randint(0, HEIGHT)) if x is None else (x, y)
         self.speed = (r.randint(0, 3), r.randint(0, 3))
         self.size = 2
-        self.color = (255, 255, 255)
+        self.color = (255, 255, 0)  # (r.randint(0, 255), r.randint(0, 255), r.randint(0, 255))
         self.rect = ()
         self.update_rect()
 
@@ -44,6 +44,9 @@ class Dot:
         self.update_rect()
         self.update_speed()
 
+    def vector_distance(self, p2):
+        return ((self.position[0] - p2[0]) ** 2 + (self.position[1] - p2[1]) ** 2) ** 0.5
+
     def draw(self, screen_in):
         pygame.draw.rect(screen_in, self.color, self.rect, self.size)
         self.update()
@@ -56,20 +59,16 @@ def refresh(screen_in, dots):
     pygame.display.update()
 
 
-def vector_distance(p1, p2):
-    return ((p1[0] - p2[0]) ** 2 + (p1[1] - p2[1]) ** 2) ** 0.5
-
-
-def draw_straight_lines(screen_in, dots):
+def draw_straight_lines(screen_in, dots):  # draws the lines between objects (dot2dot and dot2cursor)
     mouse_position = pygame.mouse.get_pos()
     for dot_main in dots:
         for dot_in in dots:
-            vector = vector_distance(dot_main.position, dot_in.position)
+            vector = dot_main.vector_distance(dot_in.position)  # distance between two dots
             if dot_main is not dot_in and vector <= DOT_CLUSTER_DISTANCE:
                 # default was (255*vector//DOT_CLUSTER_DISTANCE) if vector > DOT_CLUSTER_DISTANCE*0.6 else 150
-                color = 255-(255*vector//DOT_CLUSTER_DISTANCE) if vector > DOT_CLUSTER_DISTANCE*0.6 else 100
+                color = 255-(255*vector//DOT_CLUSTER_DISTANCE) if vector > DOT_CLUSTER_DISTANCE*0.6 else 100  # fading
                 pygame.draw.line(screen_in, (0, color, color), dot_main.position, dot_in.position, 1)
-        if vector_distance(mouse_position, dot_main.position) <= CONNECTING_DISTANCE:
+        if dot_main.vector_distance(mouse_position) <= CONNECTING_DISTANCE:
             pygame.draw.line(screen_in, MOUSE_LINE_COLOR, mouse_position, dot_main.position, 1)
 
 
